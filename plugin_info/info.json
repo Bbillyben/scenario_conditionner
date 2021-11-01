@@ -1,6 +1,6 @@
 {
-	"id" : "senario_conditionner",
-	"name" : "Senario Conditionner",
+	"id" : "scenario_conditionner",
+	"name" : "Scenario Conditionner",
 
 	"description" : {
 		"fr_FR": "permet d'activer ou de désactiver des sénarios selon des conditions"

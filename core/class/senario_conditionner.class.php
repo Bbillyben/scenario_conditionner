@@ -19,7 +19,7 @@
 /* * ***************************Includes********************************* */
 require_once __DIR__  . '/../../../../core/php/core.inc.php';
 
-class senario_conditionner extends eqLogic {
+class scenario_conditionner extends eqLogic {
     /*     * *************************Attributs****************************** */
     
   /*
@@ -138,7 +138,7 @@ class senario_conditionner extends eqLogic {
     /*     * **********************Getteur Setteur*************************** */
 }
 
-class senario_conditionnerCmd extends cmd {
+class scenario_conditionnerCmd extends cmd {
     /*     * *************************Attributs****************************** */
     
     /*
