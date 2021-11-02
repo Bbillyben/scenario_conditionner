@@ -129,7 +129,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 								<label class="col-sm-3 control-label">{{Condition à évaluer}}
 									<sup><i class="fas fa-question-circle tooltips" title="{{Condition a évaluer pour les actions en entrée et en sortie}}"></i></sup>
 								</label>
-								<div class="col-sm-7 input-group input-group-sm expression">
+								<div class="col-sm-9 input-group input-group-sm expression">
                                   <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="expression"/>
                                   <span class="input-group-btn">
                                    <button type="button" class="btn btn-default cursor bt_selectCmdExpressionSC"  tooltip="{{Rechercher une commande}}"><i class="fas fa-list-alt"></i></button>
