@@ -1,11 +1,49 @@
-# Template de plugin pour Jeedom
+# Scenario Conditionner plugin pour Jeedom
 
-Ce "template de plugin" sert de base à la réalisation de plugins pour **Jeedom**.
+<p align="center">
+  <img width="100" src="/plugin_info/scenario_conditionner_icon.png">
+</p>
 
-La documentation générale relative à la conception de plugin est consultable [ici](https://doc.jeedom.com/fr_FR/dev/). Dans le détail :   
-* [Utilisation du template de plugin](https://doc.jeedom.com/fr_FR/dev/plugin_template) : Le template de plugin est une base de plugin pour Jeedom qui doit être adaptée avec l'id de votre plugin et à laquelle il suffit d'ajouter vos propres fonctions. 
-* [Fichier info.json](https://doc.jeedom.com/fr_FR/dev/structure_info_json) : Intégré depuis la version 3.0 de Jeedom, le fichier **info.json** est obligatoire pour le bon fonctionnement des plugins et leur bon déploiement sur le Market Jeedom.
-* [Icône du plugin](https://doc.jeedom.com/fr_FR/dev/Icone_de_plugin) : Afin de pouvoir être publié sur le Market Jeedom, tout plugin doit disposer d’une icône. Attention à ne pas utiliser le même code couleur que les icônes des plugins Jeedom officiels.
-* [Widget du plugin](https://doc.jeedom.com/fr_FR/dev/widget_plugin) : Présentation des différentes manières d'inclure des widgets personnalisés au plugin.
-* [Documentation du plugin](https://doc.jeedom.com/fr_FR/dev/documentation_plugin) : Présentation de la mise en place d'une documentation car un bon plugin n'est rien sans documentation adéquate.
-* [Publication du plugin](https://doc.jeedom.com/fr_FR/dev/publication_plugin) : Description des pré-requis indispensables à la publication du plugin.
+Ce plugin permet d'activer ou désactiver des scénarios en fonction de l'évaluation d'une condition.
+
+La condition est évaluée en entrée (vrai) ou en sortie (faux) et les actions sont paramétrables sur ces deux points.
+
+
+# |Configuration|
+  
+  1. activer le plugin
+  
+  2. Configurations :  pas de configuration
+  
+  3. créer un premier équipement
+ 
+  
+ # |Equipement|
+ <p align="center">
+  <img width="100%" src="/plugin_info/img/equipement.PNG">
+</p>
+
+ 
+
+ ### Paramètres généraux      
+ 
+ * __Nom de l'équipement__ 
+ * __Objet parent__ 
+ * __Catégorie__ 
+ * 
+ Comme tout équipement classique
+ 
+ ### Résumé des scénarios et Actions
+ Ici sont résumé les scénarios configurés dans l'onglet "Scenario Conditioner", ainsi que les actions paramétrées en entrée et en sortie de condition.
+ 
+ 
+ ### Condition  
+  * __Condition à évaluer__ : Condition que jeedom évaluera (voir testeur d'expression) pour définir si nous entrons dans la condition (==vrai) ou en sortons (==faux). Le boutons sur la droite permet de selectionnes des commandes info à évaluer (comportement similaire à celui dans les scénarios pour les bloc **si**
+
+ # Commandes
+  
+ Quatre commandes sont crées avec l'éuiqpement : 
+* __Status__ : Donne le status vrai/faux qui est lié soit à l'évaluation de la condition ou à une valeur forcée par les commande force entrée ou force sortie
+* __Force Vérification__ : force l'évaluation de la condition
+* __Force Entrée__ : force les actions en entrée, et bascule le status à vrai
+* __Force Sortie__ : force les actions en sortie, et bascule le status à faux
