@@ -1,7 +1,7 @@
 # Scenario Conditioner plugin for Jeedom
 
 <p align="center">
-  <img width="100" src="/plugin_info/scenario_conditioner_icon.png">
+  <img width="100" src="/plugin_info/scenario_conditionner_icon.png">
 </p>
 
 This plugin allows you to enable or disable scenarios based on the evaluation of a condition.
@@ -20,7 +20,7 @@ The condition is evaluated as input (true) or output (false) and the actions are
   
  # |Equipment|
  <p align="center">
-  <img width="100%" src="/plugin_info/img/equipment.PNG">
+  <img width="100%" src="/plugin_info/img/equipement.PNG">
 </p>
 
  
