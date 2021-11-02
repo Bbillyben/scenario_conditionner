@@ -186,6 +186,22 @@ $('.cmdAction[data-action=addSce]').on('click', function() {
 
 
 /*              GESTION POUR LA SELECTION DES CONDITIONS       */
+$('.bt_testExpressionSC').on('click', function(e){
+  var expression = $('.eqLogicAttr[data-l2key=expression]').val();
+  console.log("expression : "+expression);
+  var modalSC=$('#md_modal').dialog({title: "Testeur"}).load('index.php?v=d&modal=expression.test').dialog({
+    autoOpen: true,
+    open: function () {
+        setTimeout(function(){
+          $("#in_testExpression").atCaret('insert',expression);
+          $('#bt_executeExpressionOk').trigger('click');
+      },100);
+        
+    }
+
+  });
+  //.find("#in_testExpression").val("ooo");
+})
 var $divScenario = $('.tab-content')
 var initSearch =0
 
@@ -231,7 +247,8 @@ $divScenario.on('click', '.bt_selectCmdExpressionSC', function(event) {
                 condition += ' ' + $('.conditionAttr[data-l1key=operande]').value()
               }
               condition += ' ' + $('.conditionAttr[data-l1key=next]').value() + ' '
-              expression.find('.eqLogicAttr[data-l2key=expression]').atCaret('insert', condition)
+              expression.find('.eqLogicAttr[data-l2key=expression]').atCaret('insert', condition);
+              expression.find('.eqLogicAttr[data-l2key=expression]').trigger('change');
               if ($('.conditionAttr[data-l1key=next]').value() != '') {
                 el.click()
               }
@@ -242,7 +259,11 @@ $divScenario.on('click', '.bt_selectCmdExpressionSC', function(event) {
     
   })
 })
+$('.eqLogicAttr[data-l2key=expression]').on('change keyup keypress', function(e){
+  $("#cond_show").empty().append($(this).val());
 
+
+})
 // gestion de l'affichage de l'équipement
 function printEqLogic(_mem) {
 

@@ -134,16 +134,27 @@ $eqLogics = eqLogic::byType($plugin->getId());
                                   <span class="input-group-btn">
                                    <button type="button" class="btn btn-default cursor bt_selectCmdExpressionSC"  tooltip="{{Rechercher une commande}}"><i class="fas fa-list-alt"></i></button>
                                   </span>
+								  
                                 </div>
+								<label class="col-sm-3 control-label"></label>
+								<div class="col-sm-3">
+									<button type="button" class="btn btn-default cursor bt_testExpressionSC"  tooltip="{{Tester la condition}}"><i class="fas fa-check""> {{Test}}</i></button>
+								</div>
+								
                                 
 							</div>
 							
 						</div>
 
 						<!-- Partie droite de l'onglet "Équipement" -->
-						<!-- Affiche l'icône du plugin par défaut mais vous pouvez y afficher les informations de votre choix -->
+		
 						<div class="col-lg-6">
 							<legend><i class="fas fa-info"></i> {{Résumé des scénarios et Actions}}</legend>
+							<div class="form-group">
+							<label class="col-sm-3 control-label">{{Condition}}</label>
+							<div id="cond_show" class="col-sm-9 small-text-SC">
+							</div>
+							</div>
 							<div class="form-group">
 								<table id="table_scenar_show" class="table">
 									<thead>
