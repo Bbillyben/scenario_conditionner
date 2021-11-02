@@ -3,7 +3,7 @@ if (!isConnect('admin')) {
 	throw new Exception('{{401 - Accès non autorisé}}');
 }
 // Déclaration des variables obligatoires
-$plugin = plugin::byId('template');
+$plugin = plugin::byId('scenario_conditionner');
 sendVarToJS('eqType', $plugin->getId());
 $eqLogics = eqLogic::byType($plugin->getId());
 ?>
@@ -25,10 +25,10 @@ $eqLogics = eqLogic::byType($plugin->getId());
 				<span>{{Configuration}}</span>
 			</div>
 		</div>
-		<legend><i class="fas fa-table"></i> {{Mes templates}}</legend>
+		<legend><i class="fas fa-table"></i> {{Mes Conditionners}}</legend>
 		<?php
 		if (count($eqLogics) == 0) {
-			echo '<br/><div class="text-center" style="font-size:1.2em;font-weight:bold;">{{Aucun équipement Template n\'est paramétré, cliquer sur "Ajouter" pour commencer}}</div>';
+			echo '<br/><div class="text-center" style="font-size:1.2em;font-weight:bold;">{{Aucun équipement Scenario Conditionner n\'est paramétré, cliquer sur "Ajouter" pour commencer}}</div>';
 		} else {
 			// Champ de recherche
 			echo '<div class="input-group" style="margin:5px;">';
@@ -71,6 +71,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 			<li role="presentation"><a href="#" class="eqLogicAction" aria-controls="home" role="tab" data-toggle="tab" data-action="returnToThumbnailDisplay"><i class="fas fa-arrow-circle-left"></i></a></li>
 			<li role="presentation" class="active"><a href="#eqlogictab" aria-controls="home" role="tab" data-toggle="tab"><i class="fas fa-tachometer-alt"></i> {{Equipement}}</a></li>
 			<li role="presentation"><a href="#commandtab" aria-controls="home" role="tab" data-toggle="tab"><i class="fas fa-list"></i> {{Commandes}}</a></li>
+            <li role="presentation"><a href="#conditionerTab" aria-controls="home" role="tab" data-toggle="tab"><i class="fas techno-fleches"></i> {{Scenario Conditioner}}</a></li>
 		</ul>
 		<div class="tab-content">
 			<!-- Onglet de configuration de l'équipement -->
@@ -123,40 +124,20 @@ $eqLogics = eqLogic::byType($plugin->getId());
 								</div>
 							</div>
 
-							<legend><i class="fas fa-cogs"></i> {{Paramètres spécifiques}}</legend>
+							<legend><i class="fas fa-cogs"></i> {{Condition}}</legend>
 							<div class="form-group">
-								<label class="col-sm-3 control-label">{{Nom du paramètre n°1}}
-									<sup><i class="fas fa-question-circle tooltips" title="{{Renseignez le paramètre n°1 de l'équipement}}"></i></sup>
+								<label class="col-sm-3 control-label">{{Condition à évaluer}}
+									<sup><i class="fas fa-question-circle tooltips" title="{{Condition a évaluer pour les actions en entrée et en sortie}}"></i></sup>
 								</label>
-								<div class="col-sm-7">
-									<input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="param1" placeholder="{{Paramètre n°1}}"/>
-								</div>
+								<div class="col-sm-7 input-group input-group-sm expression">
+                                  <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="expression"/>
+                                  <span class="input-group-btn">
+                                   <button type="button" class="btn btn-default cursor bt_selectCmdExpressionSC"  tooltip="{{Rechercher une commande}}"><i class="fas fa-list-alt"></i></button>
+                                  </span>
+                                </div>
+                                
 							</div>
-							<div class="form-group">
-								<label class="col-sm-3 control-label"> {{Mot de passe}}
-									<sup><i class="fas fa-question-circle tooltips" title="{{Renseignez le mot de passe}}"></i></sup>
-								</label>
-								<div class="col-sm-7">
-									<input type="text" class="eqLogicAttr form-control inputPassword" data-l1key="configuration" data-l2key="password"/>
-								</div>
-							</div>
-							<!-- Champ de saisie du cron d'auto-actualisation + assistant cron -->
-							<!-- La fonction cron de la classe du plugin doit contenir le code prévu pour que ce champ soit fonctionnel -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">{{Auto-actualisation}}
-									<sup><i class="fas fa-question-circle tooltips" title="{{Fréquence de rafraîchissement de l'équipement}}"></i></sup>
-								</label>
-								<div class="col-sm-7">
-									<div class="input-group">
-										<input type="text" class="eqLogicAttr form-control roundedLeft" data-l1key="configuration" data-l2key="autorefresh" placeholder="{{Cliquer sur ? pour afficher l'assistant cron}}"/>
-										<span class="input-group-btn">
-											<a class="btn btn-default cursor jeeHelper roundedRight" data-helper="cron" title="Assistant cron">
-												<i class="fas fa-question-circle"></i>
-											</a>
-										</span>
-									</div>
-								</div>
-							</div>
+							
 						</div>
 
 						<!-- Partie droite de l'onglet "Équipement" -->
@@ -176,7 +157,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 
 			<!-- Onglet des commandes de l'équipement -->
 			<div role="tabpanel" class="tab-pane" id="commandtab">
-				<a class="btn btn-default btn-sm pull-right cmdAction" data-action="add" style="margin-top:5px;"><i class="fas fa-plus-circle"></i> {{Ajouter une commande}}</a>
+				<!-- <a class="btn btn-default btn-sm pull-right cmdAction" data-action="add" style="margin-top:5px;"><i class="fas fa-plus-circle"></i> {{Ajouter une commande}}</a> -->
 				<br/><br/>
 				<div class="table-responsive">
 					<table id="table_cmd" class="table table-bordered table-condensed">
@@ -195,12 +176,34 @@ $eqLogics = eqLogic::byType($plugin->getId());
 					</table>
 				</div>
 			</div><!-- /.tabpanel #commandtab-->
+            <!-- Onglet des Conditionneurs -->
+			<div role="tabpanel" class="tab-pane" id="conditionerTab">
+				<a class="btn btn-default btn-sm pull-right cmdAction" data-action="addSce" style="margin-top:5px;"><i class="fas fa-plus-circle"></i> {{Ajouter un scenario}}</a>
+				<br/><br/>
+				<div class="table-responsive">
+					<table id="tableScenario_cmd" class="table table-bordered table-condensed">
+						<thead>
+							<tr>
+								<th>{{Id}}</th>
+								<th>{{Nom}}</th>
+								<th>{{Scenario}}</th>
+								<th>{{Action Entrée}}</th>
+								<th>{{Action Sortie}}</th>
+                                <th>{{Action}}</th>
+							</tr>
+						</thead>
+						<tbody>
+						</tbody>
+					</table>
+				</div>
+			</div><!-- /.tabpanel #commandtab-->
 
 		</div><!-- /.tab-content -->
 	</div><!-- /.eqLogic -->
 </div><!-- /.row row-overflow -->
 
 <!-- Inclusion du fichier javascript du plugin (dossier, nom_du_fichier, extension_du_fichier, id_du_plugin) -->
-<?php include_file('desktop', 'template', 'js', 'template');?>
+<?php include_file('desktop', 'scenario_conditionner', 'js', 'scenario_conditionner');?>
 <!-- Inclusion du fichier javascript du core - NE PAS MODIFIER NI SUPPRIMER -->
+<?php include_file('desktop', 'scenario', 'js');;?>
 <?php include_file('core', 'plugin.template', 'js');?>
