@@ -39,7 +39,8 @@ La condition est évaluée en entrée (vrai) ou en sortie (faux) et les actions 
  
  ### Condition  
   * __Condition à évaluer__ : Condition que jeedom évaluera (voir testeur d'expression) pour définir si nous entrons dans la condition (==vrai) ou en sortons (==faux). Le boutons sur la droite permet de selectionnes des commandes info à évaluer (comportement similaire à celui dans les scénarios pour les bloc **si**
-
+  *  __Tester__ : Bouton permettant d'ouvrir le testeur d'expression avec la condition préremplie pour test.
+ 
  # Commandes
   
  Quatre commandes sont crées avec l'éuiqpement : 
