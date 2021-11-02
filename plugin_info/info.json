@@ -1,35 +1,29 @@
 {
-	"id" : "scenario_conditionner",
-	"name" : "Scenario Conditionner",
+	"id": "scenario_conditionner",
+	"name": "Scenario Conditionner",
 
-	"description" : {
+	"description": {
 		"fr_FR": "permet d'activer ou de désactiver des sénarios selon des conditions"
 	},
-	"licence" : "AGPL",
-	"author" : "Bbillyben",
-	"require" : "3.3.39",
-	"category" : "programming",
-	"hasDependency" : false,
-	"hasOwnDeamon" : false,
-	"maxDependancyInstallTime" : 0,
-	"changelog" : "https://jeedom.github.io/plugin-template/#language#/changelog",
-	"documentation" : "https://jeedom.github.io/plugin-template/#language#/",
-	"changelog_beta" : "https://jeedom.github.io/plugin-template/#language#/beta/changelog",
-	"documentation_beta" : "https://jeedom.github.io/plugin-template/#language#/beta/",
-	"link" : {
-		"forum":"Lien vers le forum",
-		"video" : "Lien vers une video"
+	"licence": "AGPL",
+	"author": "Bbillyben",
+	"require": "3.3.39",
+	"category": "programming",
+	"hasDependency": false,
+	"hasOwnDeamon": false,
+	"maxDependancyInstallTime": 0,
+	"changelog": "https://github.com/Bbillyben/scenario_conditionner/tree/master/docs/#language#/changelog.md",
+	"documentation": "https://github.com/Bbillyben/scenario_conditionner/tree/master/docs/#language#/README.md",
+	"changelog_beta": "https://github.com/Bbillyben/scenario_conditionner/tree/beta/docs/#language#/changelog.md",
+	"documentation_beta": "https://github.com/Bbillyben/scenario_conditionner/tree/beta/docs/#language#/README.md",
+	"link": {
+		"forum": "Lien vers le forum",
+		"video": "Lien vers une video"
 	},
 	"language": [
 		"fr_FR",
 		"en_US",
-		"es_ES",
-		"de_DE",
-		"ru_RU",
-		"id_ID",
-		"it_IT",
-		"ja_JP",
-		"pt_PT"
+		"es_ES"
 	],
 	"compatibility": [
 		"miniplus",
