@@ -20,6 +20,12 @@
 require_once __DIR__  . '/../../../../core/php/core.inc.php';
 
 class scenario_conditionner extends eqLogic {
+
+   /*static const action_list = array(
+      'activate'=>__('Activer', __FILE__),
+      'deactivate'=>__('Désactiver', __FILE__),
+      'none'=>__('Ne rien faire', __FILE__)
+   );*/
     /*     * *************************Attributs****************************** */
     
   /*
@@ -44,10 +50,24 @@ class scenario_conditionner extends eqLogic {
          if($cmdCol->getConfiguration('cmdType') != "conditioner")continue;
          $scen=scenario::byString($cmdCol->getConfiguration('scenarCond'));
          $listScen[]=array('scenar'=>$scen->getHumanName(),
-                  'act_entry'=>$cmdCol->getConfiguration('entry-act'),
-                  'act_exit'=>$cmdCol->getConfiguration('exit-act'));
+                  'act_entry'=>self::getActionTranslation($cmdCol->getConfiguration('entry-act')),
+                  'act_exit'=>self::getActionTranslation($cmdCol->getConfiguration('exit-act')));
       }
       return $listScen;
+  }
+  Private static function getActionTranslation($act){
+     switch($act){
+        case 'activate':
+            return __('Activer', __FILE__);
+         break;
+         case 'deactivate':
+            return __('Désactiver', __FILE__);
+            break;
+        case 'none':
+         return __('Ne rien faire', __FILE__);
+         break;
+     }
+     return false;
   }
   // ========== Gestion de la mise à jour des données des conditions
   public static function trigger($_option) {

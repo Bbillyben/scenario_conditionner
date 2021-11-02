@@ -143,9 +143,9 @@ $eqLogics = eqLogic::byType($plugin->getId());
 						<!-- Partie droite de l'onglet "Équipement" -->
 						<!-- Affiche l'icône du plugin par défaut mais vous pouvez y afficher les informations de votre choix -->
 						<div class="col-lg-6">
-							<legend><i class="fas fa-info"></i> {{Résumé des scénario et Actions}}</legend>
+							<legend><i class="fas fa-info"></i> {{Résumé des scénarios et Actions}}</legend>
 							<div class="form-group">
-								<table id="table_scenar_show" class="table table-bordered table-condensed">
+								<table id="table_scenar_show" class="table">
 									<thead>
 										<tr>
 											<th>{{Scenario}}</th>
@@ -215,5 +215,6 @@ $eqLogics = eqLogic::byType($plugin->getId());
 <!-- Inclusion du fichier javascript du plugin (dossier, nom_du_fichier, extension_du_fichier, id_du_plugin) -->
 <?php include_file('desktop', 'scenario_conditionner', 'js', 'scenario_conditionner');?>
 <!-- Inclusion du fichier javascript du core - NE PAS MODIFIER NI SUPPRIMER -->
+<?php include_file('desktop', 'scenario_conditionner', 'css', 'scenario_conditionner');;?>
 <?php include_file('desktop', 'scenario', 'js');;?>
 <?php include_file('core', 'plugin.template', 'js');?>

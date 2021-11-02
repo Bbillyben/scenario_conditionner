@@ -30,10 +30,9 @@ try {
     En V4 : autoriser l'exécution d'une méthode 'action' en GET en indiquant le(s) nom(s) de(s) action(s) dans un tableau en argument
   */  
     ajax::init();
-    log::add('scenario_conditionner','debug','╔═══ #################### AJAX action required :'.init('action'));
+    //log::add('scenario_conditionner','debug','╔═══ #################### AJAX action required :'.init('action'));
     if (init('action') == 'get-scenarList') { 
-      //send file
-      log::add('scenario_conditionner', 'debug','╠════ call get-scenarList for id:'.init('eqlogicId'));
+      //log::add('scenario_conditionner', 'debug','╠════ call get-scenarList for id:'.init('eqlogicId'));
       $scenarList=scenario_conditionner::getScenarList(init('eqlogicId'));
       ajax::success($scenarList);
     }

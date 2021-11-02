@@ -271,9 +271,9 @@ function printEqLogic(_mem) {
         for (var i = 0, len = data.result.length; i < len; i++) {
           console.log(data.result[i]);
           tbody.append("<tr>");
-          tbody.append("<td>"+data.result[i]["scenar"]+"</td>");
-          tbody.append("<td>"+data.result[i]["act_entry"]+"</td>");
-          tbody.append("<td>"+data.result[i]["act_exit"]+"</td>");
+          tbody.append("<td class='table_resume'>"+data.result[i]["scenar"]+"</td>");
+          tbody.append("<td class='table_resume'>"+data.result[i]["act_entry"]+"</td>");
+          tbody.append("<td class='table_resume'>"+data.result[i]["act_exit"]+"</td>");
           tbody.append("</tr>");
          
         }
