@@ -29,7 +29,26 @@ class scenario_conditionner extends eqLogic {
    */
     
     /*     * ***********************Methode static*************************** */
-  
+  public static function getScenarList($eqId){
+      $eqL=eqLogic::byLogicalId($eqId,"ColorTransition");
+      $eqL=eqLogic::byId($eqId);
+
+      if(!is_object($eqL)){
+      log::add('ColorTransition', 'error', '####### Show room error '.$eqId.' not found######');
+      return false;
+      }
+      $listScen=array();
+      $allCmds = $eqL->getCmd('info');
+
+      foreach($allCmds as $cmdCol){
+         if($cmdCol->getConfiguration('cmdType') != "conditioner")continue;
+         $scen=scenario::byString($cmdCol->getConfiguration('scenarCond'));
+         $listScen[]=array('scenar'=>$scen->getHumanName(),
+                  'act_entry'=>$cmdCol->getConfiguration('entry-act'),
+                  'act_exit'=>$cmdCol->getConfiguration('exit-act'));
+      }
+      return $listScen;
+  }
   // ========== Gestion de la mise à jour des données des conditions
   public static function trigger($_option) {
 		log::add(__CLASS__, 'debug', 'Trigger sur id :'.$_option['id']);
@@ -245,11 +264,10 @@ class scenario_conditionner extends eqLogic {
           return;
         }
     	$this->manageScenar($testCond);
-    	$ctCMD = $this->getCmd(null, 'status');
-        $ctCMD->event($testCond);
+    	
     
   }
-  private function manageScenar($status){
+  public function manageScenar($status){
    		$action = ($status == 1? 'entry-act':'exit-act');
     	log::add(__CLASS__, 'debug', 'Gestion scénario sur action:'.$action);
     	$allCmd=$this->getCmd('info');
@@ -260,6 +278,9 @@ class scenario_conditionner extends eqLogic {
             log::add(__CLASS__, 'debug', 'action : '.$scenarAct.' sur scenario : '.$scenarId);
 			$this->action_scenar($scenarId, $scenarAct);
         }
+    
+    	$ctCMD = $this->getCmd(null, 'status');
+        $ctCMD->event($status);
   }    
   private function action_scenar($scenarId, $action){
    	if($action=='none')return;
@@ -375,6 +396,25 @@ class scenario_conditionnerCmd extends cmd {
   // Exécution d'une commande  
      public function execute($_options = array()) {
         
+      log::add('scenario_conditionner','debug', "╔═══════════════════════ execute CMD : ".$this->getId()." | ".$this->getHumanName().", logical id : ".$this->getLogicalId() ."  options : ".print_r($_options));
+      log::add('scenario_conditionner','debug', '╠════ Eq logic '.$this->getEqLogic()->getHumanName());
+      
+      switch($this->getLogicalId()){
+         case 'force_check':
+          	$this->getEqLogic()->checkCondition();
+         case 'force_entry':
+          	$this->getEqLogic()->manageScenar(1);
+         	break;
+         case 'force_exit';
+         	$this->getEqLogic()->manageScenar(0);
+           break;
+         Default:
+         log::add('scenario_conditionner','debug', '╠════ Default call');
+
+      } 
+      log::add('scenario_conditionner','debug', "╚═════════════════════════════════════════ END execute CMD ".$this->getHumanName());
+		return true;
+	
      }
 
     /*     * **********************Getteur Setteur*************************** */

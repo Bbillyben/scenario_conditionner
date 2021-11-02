@@ -143,12 +143,22 @@ $eqLogics = eqLogic::byType($plugin->getId());
 						<!-- Partie droite de l'onglet "Équipement" -->
 						<!-- Affiche l'icône du plugin par défaut mais vous pouvez y afficher les informations de votre choix -->
 						<div class="col-lg-6">
-							<legend><i class="fas fa-info"></i> {{Informations}}</legend>
+							<legend><i class="fas fa-info"></i> {{Résumé des scénario et Actions}}</legend>
 							<div class="form-group">
-								<div class="text-center">
-									<img name="icon_visu" src="<?= $plugin->getPathImgIcon(); ?>" style="max-width:160px;"/>
-								</div>
+								<table id="table_scenar_show" class="table table-bordered table-condensed">
+									<thead>
+										<tr>
+											<th>{{Scenario}}</th>
+											<th>{{Action entrée}}</th>
+											<th>{{Action sortie}}</th>
+										</tr>
+									</thead>
+									<tbody>
+									</tbody>
+								</table>
 							</div>
+                            <div id='scenar_list'/>
+                                
 						</div>
 					</fieldset>
 				</form>

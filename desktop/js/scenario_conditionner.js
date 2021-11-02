@@ -242,3 +242,43 @@ $divScenario.on('click', '.bt_selectCmdExpressionSC', function(event) {
     
   })
 })
+
+// gestion de l'affichage de l'équipement
+function printEqLogic(_mem) {
+
+  $.ajax({
+    type: "POST", 
+    url: "plugins/scenario_conditionner/core/ajax/scenario_conditionner.ajax.php", 
+    data: {
+        action: "get-scenarList",
+        eqlogicId:init(_mem.id)
+    },
+    dataType: 'json',
+    error: function (request, status, error) {
+        handleAjaxError(request, status, error);
+    },
+    success: function (data) { // si l'appel a bien fonctionné
+        if (init(data.state) != 'ok') {
+            $('#div_alert').showAlert({message: data.result, level: 'danger'});
+            return;
+        }
+        //console.log(data.result);
+        
+        // onvide le wrapper
+        var tbody=$("#table_scenar_show > tbody");
+        tbody.empty();
+        
+        for (var i = 0, len = data.result.length; i < len; i++) {
+          console.log(data.result[i]);
+          tbody.append("<tr>");
+          tbody.append("<td>"+data.result[i]["scenar"]+"</td>");
+          tbody.append("<td>"+data.result[i]["act_entry"]+"</td>");
+          tbody.append("<td>"+data.result[i]["act_exit"]+"</td>");
+          tbody.append("</tr>");
+         
+        }
+
+        
+    }
+  });
+};
