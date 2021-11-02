@@ -151,7 +151,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 						<div class="col-lg-6">
 							<legend><i class="fas fa-info"></i> {{Résumé des scénarios et Actions}}</legend>
 							<div class="form-group">
-							<label class="col-sm-3 control-label">{{Condition}}</label>
+							<label class="col-sm-2">{{Condition}}</label>
 							<div id="cond_show" class="col-sm-9 small-text-SC">
 							</div>
 							</div>
@@ -159,7 +159,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 								<table id="table_scenar_show" class="table">
 									<thead>
 										<tr>
-											<th>{{Scenario}}</th>
+											<th class="col-sm-8">{{Scenario}}</th>
 											<th>{{Action entrée}}</th>
 											<th>{{Action sortie}}</th>
 										</tr>

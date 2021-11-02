@@ -81,49 +81,6 @@ class scenario_conditionner extends eqLogic {
 		
 	}
 
-    /*
-     * Fonction exécutée automatiquement toutes les minutes par Jeedom
-      public static function cron() {
-      }
-     */
-
-    /*
-     * Fonction exécutée automatiquement toutes les 5 minutes par Jeedom
-      public static function cron5() {
-      }
-     */
-
-    /*
-     * Fonction exécutée automatiquement toutes les 10 minutes par Jeedom
-      public static function cron10() {
-      }
-     */
-    
-    /*
-     * Fonction exécutée automatiquement toutes les 15 minutes par Jeedom
-      public static function cron15() {
-      }
-     */
-    
-    /*
-     * Fonction exécutée automatiquement toutes les 30 minutes par Jeedom
-      public static function cron30() {
-      }
-     */
-    
-    /*
-     * Fonction exécutée automatiquement toutes les heures par Jeedom
-      public static function cronHourly() {
-      }
-     */
-
-    /*
-     * Fonction exécutée automatiquement tous les jours par Jeedom
-      public static function cronDaily() {
-      }
-     */
-
-
 
     /*     * *********************Méthodes d'instance************************* */
     
@@ -168,7 +125,7 @@ class scenario_conditionner extends eqLogic {
       if (!is_object($ctCMD)) {
          $ctCMD = new ColorTransition_actuatorCmd();
          $ctCMD->setLogicalId('status');
-         $ctCMD->setIsVisible(0);
+         $ctCMD->setIsVisible(1);
          $ctCMD->setName(__('Status', __FILE__));
       }
 
@@ -237,7 +194,7 @@ class scenario_conditionner extends eqLogic {
 
  // Fonction exécutée automatiquement avant la suppression de l'équipement 
     public function preRemove() {
-        
+        $this->removeListener();
     }
 
  // Fonction exécutée automatiquement après la suppression de l'équipement 
@@ -333,7 +290,7 @@ class scenario_conditionner extends eqLogic {
 	}
 
 	private function removeListener() {
-      log::add(__CLASS__, 'debug', ' Suppression des Ecouteurs');
+      log::add(__CLASS__, 'debug', ' Suppression des Ecouteurs de '.$this->getHumanName());
 		$listener = $this->getListener();
 		if (is_object($listener)) {
 			$listener->remove();
