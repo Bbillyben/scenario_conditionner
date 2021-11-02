@@ -71,12 +71,14 @@ class scenario_conditionner extends eqLogic {
   }
   // ========== Gestion de la mise à jour des données des conditions
   public static function trigger($_option) {
-		log::add(__CLASS__, 'debug', 'Trigger sur id :'.$_option['id']);
+		log::add(__CLASS__, 'debug', '╔═══════════════════════  Trigger sur id :'.$_option['id']);
 
 		$eqLogic = self::byId($_option['id']);
 		if (is_object($eqLogic) && $eqLogic->getIsEnable() == 1) {
 			$eqLogic->checkCondition();
 		}
+      log::add(__CLASS__,'debug', "╚═════════════════════════════════════════ END Trigger ");
+		
 	}
 
     /*
