@@ -188,19 +188,15 @@ $('.cmdAction[data-action=addSce]').on('click', function() {
 /*              GESTION POUR LA SELECTION DES CONDITIONS       */
 $('.bt_testExpressionSC').on('click', function(e){
   var expression = $('.eqLogicAttr[data-l2key=expression]').val();
-  console.log("expression : "+expression);
   var modalSC=$('#md_modal').dialog({title: "Testeur"}).load('index.php?v=d&modal=expression.test').dialog({
     autoOpen: true,
     open: function () {
         setTimeout(function(){
           $("#in_testExpression").atCaret('insert',expression);
           $('#bt_executeExpressionOk').trigger('click');
-      },100);
-        
+      },100);  
     }
-
   });
-  //.find("#in_testExpression").val("ooo");
 })
 var $divScenario = $('.tab-content')
 var initSearch =0
@@ -290,7 +286,6 @@ function printEqLogic(_mem) {
         tbody.empty();
         
         for (var i = 0, len = data.result.length; i < len; i++) {
-          console.log(data.result[i]);
           tbody.append("<tr>");
           tbody.append("<td class='table_resume'>"+data.result[i]["scenar"]+"</td>");
           tbody.append("<td class='table_resume'>"+data.result[i]["act_entry"]+"</td>");
