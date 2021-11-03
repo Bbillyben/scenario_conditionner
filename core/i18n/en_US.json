@@ -1,13 +1,4 @@
 {
-	"plugins\/scenario_conditionner\/core\/class\/scenario_conditionner.class.php": {
-	   "Status":"Status",
-	   "Force Vérification":"Force Check",
-	   "Force Entrée":"Force Entry",
-	   "Force Sortie":"Force Exit",
-	   "Activer":"Activate",
-	   "Désactiver":"Deactivate",
-	   "Ne rien faire":"Do nothing"
-	},
 	"plugins\/scenario_conditionner\/desktop\/js\/scenario_conditionner.js": {
 	   "Nom de la commande":"Command Name",
 	   "Aucune":"None",
@@ -26,6 +17,15 @@
 	   "Ne rien mettre":"Do not put anything",
 	   "Valider":"Validate"
 	},
+	"plugins\/scenario_conditionner\/core\/class\/scenario_conditionner.class.php": {
+		"Status":"Status",
+		"Force Vérification":"Force Check",
+		"Force Entrée":"Force Entry",
+		"Force Sortie":"Force Exit",
+		"Activer":"Activate",
+		"Désactiver":"Deactivate",
+		"Ne rien faire":"Do nothing"
+	 },
 	"plugins\/scenario_conditionner\/desktop\/php\/scenario_conditionner.php": {
 	   "Gestion":"Management",
 	   "Ajouter":"Add",
