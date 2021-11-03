@@ -55,7 +55,7 @@ La condition est évaluée en entrée (vrai) ou en sortie (faux) et les actions 
   <img width="100%" src="/plugin_info/img/scenario.png">
 </p>
 
-Ici vous ajouter les scénarios que vous voulez gérer, et définissez les actions en entrée et en sortie de condition
+Ici vous ajoutez les scénarios que vous voulez gérer, et définissez les actions en entrée et en sortie de condition
 
 * __Ajouter un scenario__ : ajoute une commande "scenario"
 * cliquez sur l'icone à coté du champs scénario pour ouvrir le selectionneur de scénario;
