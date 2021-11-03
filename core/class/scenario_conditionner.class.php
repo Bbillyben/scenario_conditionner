@@ -21,19 +21,7 @@ require_once __DIR__  . '/../../../../core/php/core.inc.php';
 
 class scenario_conditionner extends eqLogic {
 
-   /*static const action_list = array(
-      'activate'=>__('Activer', __FILE__),
-      'deactivate'=>__('Désactiver', __FILE__),
-      'none'=>__('Ne rien faire', __FILE__)
-   );*/
-    /*     * *************************Attributs****************************** */
-    
-  /*
-   * Permet de définir les possibilités de personnalisation du widget (en cas d'utilisation de la fonction 'toHtml' par exemple)
-   * Tableau multidimensionnel - exemple: array('custom' => true, 'custom::layout' => false)
-	public static $_widgetPossibility = array();
-   */
-    
+   
     /*     * ***********************Methode static*************************** */
   public static function getScenarList($eqId){
       $eqL=eqLogic::byLogicalId($eqId,"ColorTransition");
