@@ -4,7 +4,7 @@
 
 	"description": {
 		"fr_FR": "Ce plugin permet d'activer ou de désactiver des scénarios selon l'évaluation d'une condition, qui peut être composite. Les actions sont définies selon l'entrée dans la condition (vrai) ou la sortie de la condition (faux)",
-		'en_US" : "This plugin allows to activate or deactivate scenarios according to the evaluation of a condition, which can be composite. The actions are defined according to the entry in the condition (true) or the exit from the condition (false)"
+		"en_US" : "This plugin allows to activate or deactivate scenarios according to the evaluation of a condition, which can be composite. The actions are defined according to the entry in the condition (true) or the exit from the condition (false)"
 	},
 	"licence": "AGPL",
 	"author": "Bbillyben",
