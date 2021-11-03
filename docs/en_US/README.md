@@ -46,5 +46,20 @@ The condition is evaluated as input (true) or output (false) and the actions are
  Four commands are created with the tool: 
 * __Status__ : Gives the true/false status which is linked to either the evaluation of the condition or to a value forced by the force in or force out commands
 * __Force Verification__ : force the evaluation of the condition
-* force input__ : force the input actions, and set the status to true
+* __force input__ : force the input actions, and set the status to true
 * __Force Output__ : force output actions, and set status to false
+
+# Scenarios
+ <p align="center">
+  <img width="100%" src="/plugin_info/img/scenario.png">
+</p>
+
+Here you add the scenarios you want to manage, and define the condition input and output actions
+
+* __Add a scenario__ : add a "scenario" command
+* click on the icon next to the scenario field to open the scenario selector;
+* choose the input and output actions among :
+  * __Activate__ : activate the scenario
+  * __Desactivate__ : disable the scenario
+  * __Do nothing__ : do not act on the change of condition (input or output)
+ 
