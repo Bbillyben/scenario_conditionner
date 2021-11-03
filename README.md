@@ -48,3 +48,20 @@ La condition est évaluée en entrée (vrai) ou en sortie (faux) et les actions 
 * __Force Vérification__ : force l'évaluation de la condition
 * __Force Entrée__ : force les actions en entrée, et bascule le status à vrai
 * __Force Sortie__ : force les actions en sortie, et bascule le status à faux
+
+
+ # Scénarios
+ <p align="center">
+  <img width="100%" src="/plugin_info/img/scenario.png">
+</p>
+
+Ici vous ajouter les scénarios que vous voulez gérer, et définissez les actions en entrée et en sortie de condition
+
+* __Ajouter un scenario__ : ajoute une commande "scenario"
+* cliquez sur l'icone à coté du champs scénario pour ouvrir le selectionneur de scénario;
+* choississez les actions en entrée et en sortie parmi :
+  * __Activer__ : activer le scenario
+  * __Désactiver__ : désactiver le scenario
+  * __Ne rien Faire__ : n'agit pas sur le changement de condition (en entrée ou en sortie)
+ 
+ 
