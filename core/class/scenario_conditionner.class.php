@@ -354,23 +354,7 @@ class scenario_conditionner extends eqLogic {
 }
 
 class scenario_conditionnerCmd extends cmd {
-    /*     * *************************Attributs****************************** */
-    
-    /*
-      public static $_widgetPossibility = array();
-    */
-    
-    /*     * ***********************Methode static*************************** */
 
-
-    /*     * *********************Methode d'instance************************* */
-
-    /*
-     * Non obligatoire permet de demander de ne pas supprimer les commandes même si elles ne sont pas dans la nouvelle configuration de l'équipement envoyé en JS
-      public function dontRemoveCmd() {
-      return true;
-      }
-     */
 
   // Exécution d'une commande  
      public function execute($_options = array()) {
@@ -387,7 +371,7 @@ class scenario_conditionnerCmd extends cmd {
          case 'force_exit';
          	$this->getEqLogic()->manageScenar(0);
            break;
-         Default:
+         default:
          log::add('scenario_conditionner','debug', '╠════ Default call');
 
       } 
