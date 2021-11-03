@@ -123,7 +123,7 @@ class scenario_conditionner extends eqLogic {
        // commande info du status
         $ctCMD = $this->getCmd(null, 'status');
       if (!is_object($ctCMD)) {
-         $ctCMD = new ColorTransition_actuatorCmd();
+         $ctCMD = new scenario_conditionnerCmd();
          $ctCMD->setLogicalId('status');
          $ctCMD->setIsVisible(1);
          $ctCMD->setName(__('Status', __FILE__));
@@ -137,7 +137,7 @@ class scenario_conditionner extends eqLogic {
       
       $ctCMDAct = $this->getCmd(null, 'force_check');
       if (!is_object($ctCMDAct)) {
-         $ctCMDAct = new ColorTransition_actuatorCmd();
+         $ctCMDAct = new scenario_conditionnerCmd();
          $ctCMDAct->setLogicalId('force_check');
          $ctCMDAct->setIsVisible(1);
          $ctCMDAct->setName(__('Force Vérification', __FILE__));
@@ -152,7 +152,7 @@ class scenario_conditionner extends eqLogic {
       // creation des commandes par défaut
       $ctCMDAct = $this->getCmd(null, 'force_entry');
       if (!is_object($ctCMDAct)) {
-         $ctCMDAct = new ColorTransition_actuatorCmd();
+         $ctCMDAct = new scenario_conditionnerCmd();
          $ctCMDAct->setLogicalId('force_entry');
          $ctCMDAct->setIsVisible(1);
          $ctCMDAct->setName(__('Force Entrée', __FILE__));
@@ -164,7 +164,7 @@ class scenario_conditionner extends eqLogic {
       
       $ctCMDAct = $this->getCmd(null, 'force_exit');
       if (!is_object($ctCMDAct)) {
-         $ctCMDAct = new ColorTransition_actuatorCmd();
+         $ctCMDAct = new scenario_conditionnerCmd();
          $ctCMDAct->setLogicalId('force_exit');
          $ctCMDAct->setIsVisible(1);
          $ctCMDAct->setName(__('Force Sortie', __FILE__));
