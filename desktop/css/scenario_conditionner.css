@@ -4,3 +4,16 @@
 .small-text-SC{
     font-size: 0.8em !important;
 }
+.tagConfDiv{
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    margin-top: 5px !important;
+
+}
+.tagConfDiv > span{
+    white-space: nowrap;
+}
+.tagConf{
+    
+}

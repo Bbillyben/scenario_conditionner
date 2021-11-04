@@ -112,21 +112,32 @@ function addCmdToTable(_cmd) {
     
     // Action Entrée
     tr += '<td style="min-width:80px;width:100px;">';
-    tr += '<select class="cmdAttr form-control" data-l1key="configuration" data-l2key="entry-act">';
+    tr += '<select class="cmdAttr form-control " data-l1key="configuration" data-l2key="entry-act">';
    
     tr += '<option value="activate">{{Activer}}</option>';
+    tr += '<option value="activate_launch">{{Activer et lancer}}</option>';
     tr += '<option value="deactivate">{{Désactiver}}</option>';
     tr += '<option value="none">{{Ne rien Faire}}</option>';
     tr += '</select>';
+      // les tag du scenar
+      tr += '<div class="tagConfDiv">'; 
+      tr += '<span>tags : </span>';
+      tr += '<input class="tags cmdAttr form-control" data-l1key="configuration" data-l2key="tag-entry"/>';
+      tr += '</div>';
     tr += '</td>';
     // Action Sorie
     tr += '<td style="min-width:80px;width:100px;">';
     tr += '<select class="cmdAttr form-control" data-l1key="configuration" data-l2key="exit-act">';
     tr += '<option value="deactivate">{{Désactiver}}</option>';
     tr += '<option value="activate">{{Activer}}</option>';
-    
+    tr += '<option value="activate_launch">{{Activer et lancer}}</option>';
     tr += '<option value="none">{{Ne rien Faire}}</option>';
     tr += '</select>';
+      // les tag du scenar
+      tr += '<div class="tagConfDiv">'; 
+      tr += '<span>tags : </span>';
+      tr += '<input type="text" class="tags cmdAttr form-control" data-l1key="configuration" data-l2key="tag-exit"/>';
+      tr += '</div>';
     tr += '</td>';
      //Actions
       tr += '<td style="min-width:5px;width:10px;">';
@@ -169,10 +180,17 @@ function addCmdToTable(_cmd) {
            calcul.val('');
          calcul.atCaret('insert', result.human);
        });
-    });
+    });  
 
-  
-  
+
+    $('.cmdAttr[data-l2key="entry-act"]').on('change click', function(){
+      manageActionTag($(this));
+    });
+    $('.cmdAttr[data-l2key="exit-act"]').on('change click', function(){
+      manageActionTag($(this));
+    }); 
+    $('.cmdAttr[data-l2key="entry-act"]').trigger('change');
+    $('.cmdAttr[data-l2key="exit-act"]').trigger('change');
  }
 
 /*              GESTION Ajout scenarion       */
@@ -181,8 +199,18 @@ $('.cmdAction[data-action=addSce]').on('click', function() {
   addCmdToTable(_cmd)
   $('.cmd:last .cmdAttr[data-l1key=type]').trigger('change')
   modifyWithoutSave = true
-})
-
+});
+/*              GESTION Action launch       */
+//$('.cmdAttr[data-l2key=entry-act]').on('change', manageActionTag($(this)));
+function manageActionTag(param){
+  console.log(param.val());
+  var tagEl = param.parent().find('.tagConfDiv');
+  if(param.val()=='activate_launch'){
+    tagEl.show();
+  }else{
+    tagEl.hide();
+  }
+};
 
 
 /*              GESTION POUR LA SELECTION DES CONDITIONS       */
