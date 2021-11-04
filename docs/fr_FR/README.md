@@ -61,7 +61,9 @@ Ici vous ajouter les scénarios que vous voulez gérer, et définissez les actio
 * cliquez sur l'icone à coté du champs scénario pour ouvrir le selectionneur de scénario;
 * choississez les actions en entrée et en sortie parmi :
   * __Activer__ : activer le scenario
+  * __Activer et lancer__ : active le scenario et le lance avec les tags dérfini dans le champs tags
   * __Désactiver__ : désactiver le scenario
   * __Ne rien Faire__ : n'agit pas sur le changement de condition (en entrée ou en sortie)
  
  
+
