@@ -1,4 +1,4 @@
-# Scenario Conditioner plugin for Jeedom
+# Activation Conditioner plugin for Jeedom
 
 <p align="center">
   <img width="100" src="/plugin_info/scenario_conditionner_icon.png">
@@ -57,6 +57,7 @@ The condition is evaluated as input (true) or output (false) and the actions are
 Here you add the scenarios you want to manage, and define the condition input and output actions
 
 * __Add__ : adds a command to manage a scenario or an equipment
+* __Type__ : Choose between scenario or equipment the choice of input and output actions is contextualized.
 * click on the icon next to the scenario field to open the scenario selector;
 * choose the input and output actions among :
   * __ Activate__ : activate the scenario/equipement
