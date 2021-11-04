@@ -18,10 +18,12 @@
 
 /* * ***************************Includes********************************* */
 require_once __DIR__  . '/../../../../core/php/core.inc.php';
+require_once __DIR__  . '/../../../../core/php/utils.inc.php';
 
 class scenario_conditionner extends eqLogic {
 
-   
+
+    
     /*     * ***********************Methode static*************************** */
   public static function getScenarList($eqId){
       $eqL=eqLogic::byLogicalId($eqId,"ColorTransition");
@@ -51,11 +53,21 @@ class scenario_conditionner extends eqLogic {
          case 'deactivate':
             return __('Désactiver', __FILE__);
             break;
+         case 'activate_launch':
+            return __('Activer et lancer', __FILE__);
+            break;
         case 'none':
          return __('Ne rien faire', __FILE__);
          break;
      }
      return false;
+  }
+
+  public static function getTagsCmd($cmd, $status){
+      if($cmd->getConfiguration('cmdType') != "conditioner")return false;
+      $action = ($status == 1? 'tag-entry':'tag-exit');
+      $tags = $cmd->getConfiguration($action);
+      return arg2array($tags);
   }
   // ========== Gestion de la mise à jour des données des conditions
   public static function trigger($_option) {
@@ -161,6 +173,7 @@ class scenario_conditionner extends eqLogic {
       $ctCMDAct->setSubType('other');      
       $ctCMDAct->setEqLogic_id($this->getId());
       $ctCMDAct->save();
+
       
       
       // mmise à jhour du status 
@@ -243,13 +256,13 @@ class scenario_conditionner extends eqLogic {
             $scenarId =$cmd->getConfiguration('scenarCond');
             $scenarAct = $cmd->getConfiguration($action);
             log::add(__CLASS__, 'debug', 'action : '.$scenarAct.' sur scenario : '.$scenarId);
-			$this->action_scenar($scenarId, $scenarAct);
+			$this->action_scenar($scenarId, $scenarAct, $status, $cmd);
         }
     
     	$ctCMD = $this->getCmd(null, 'status');
         $ctCMD->event($status);
   }    
-  private function action_scenar($scenarId, $action){
+  private function action_scenar($scenarId, $action, $status,$cmd){
    	if($action=='none')return;
     $scenar=scenario::byString($scenarId);
     if(!is_object($scenar)){
@@ -262,6 +275,14 @@ class scenario_conditionner extends eqLogic {
         	log::add(__CLASS__, 'debug', 'Activation scénario : '.$scenar->getHumanName());
             $scenar->setIsActive(1);
         	$scenar->save();
+            break;
+         case 'activate_launch':
+            $scenar->setIsActive(1);
+        	   $scenar->save();
+            $tags = self::getTagsCmd($cmd, $status);
+            $scenar->setTags($tags);
+            log::add(__CLASS__, 'debug', 'Lance scenario avec tags : '.json_encode($tags));
+            $scenar->launch();
             break;
         case 'deactivate':
             log::add(__CLASS__, 'debug', 'Désactivation scénario : '.$scenar->getHumanName());
@@ -337,6 +358,7 @@ class scenario_conditionner extends eqLogic {
 			$listener->remove();
 		}
 	}
+
   
   
 }
@@ -358,7 +380,9 @@ class scenario_conditionnerCmd extends cmd {
          	break;
          case 'force_exit';
          	$this->getEqLogic()->manageScenar(0);
-           break;
+           break;           case 'TEST';
+           $this->getEqLogic()->TEST();
+          break;
          default:
          log::add('scenario_conditionner','debug', '╠════ Default call');
 
