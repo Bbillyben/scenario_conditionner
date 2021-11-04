@@ -46,6 +46,7 @@ class scenario_conditionner extends eqLogic {
             $eqId = str_replace(array('#', 'eqLogic'),array('',''),$cmdCol->getConfiguration('equipCond'));
             $scen=eqLogic::byId($eqId);
          }
+         if($scen == false || !is_object($scen))continue;
          $listScen[]=array('scenar'=>$scen->getHumanName(),
                   'act_entry'=>self::getActionTranslation($cmdCol->getConfiguration('entry-act')),
                   'act_exit'=>self::getActionTranslation($cmdCol->getConfiguration('exit-act')));
