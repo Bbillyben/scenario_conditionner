@@ -41,7 +41,9 @@ class scenario_conditionner extends eqLogic {
          if($cmdCol->getConfiguration('cmdType') != "conditioner")continue;
          
          if($cmdCol->getConfiguration('act_type')=='scenario'){
-            $scen=scenario::byString($cmdCol->getConfiguration('scenarCond'));
+            $eqId = $cmdCol->getConfiguration('scenarCond');
+            if($eqId=='')continue;
+            $scen=scenario::byString($eqId);
          }else{  
             $eqId = str_replace(array('#', 'eqLogic'),array('',''),$cmdCol->getConfiguration('equipCond'));
             $scen=eqLogic::byId($eqId);
