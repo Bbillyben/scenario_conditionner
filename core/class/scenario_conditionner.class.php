@@ -26,6 +26,8 @@ class scenario_conditionner extends eqLogic {
     
     /*     * ***********************Methode static*************************** */
   public static function getScenarList($eqId){
+     log::add(__CLASS__, 'debug', 'call showroom, id :'.$eqId);
+     if($eqId=='' or $eqId==0)return array();
       $eqL=eqLogic::byId($eqId);
 
       if(!is_object($eqL)){
@@ -39,10 +41,19 @@ class scenario_conditionner extends eqLogic {
          if($cmdCol->getConfiguration('cmdType') != "conditioner")continue;
          
          if($cmdCol->getConfiguration('act_type')=='scenario'){
-            $scen=scenario::byString($cmdCol->getConfiguration('scenarCond'));
+            $eqId = $cmdCol->getConfiguration('scenarCond');
+            if($eqId==''){
+               log::add(__CLASS__,"warning", 'Scenario not found in '.$eqL->getHumanName());
+               continue;
+            }
+            $scen=scenario::byString($eqId);
          }else{  
             $eqId = str_replace(array('#', 'eqLogic'),array('',''),$cmdCol->getConfiguration('equipCond'));
             $scen=eqLogic::byId($eqId);
+         }
+         if($scen == false || !is_object($scen)){
+            log::add(__CLASS__,"warning", 'Item not found in '.$eqL->getHumanName());
+            continue;
          }
          $listScen[]=array('scenar'=>$scen->getHumanName(),
                   'act_entry'=>self::getActionTranslation($cmdCol->getConfiguration('entry-act')),
