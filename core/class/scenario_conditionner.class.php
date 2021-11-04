@@ -26,6 +26,8 @@ class scenario_conditionner extends eqLogic {
     
     /*     * ***********************Methode static*************************** */
   public static function getScenarList($eqId){
+     log::add(__CLASS__, 'debug', 'call showroom, id :'.$eqId);
+     if($eqId=='' or $eqId==0)return array();
       $eqL=eqLogic::byId($eqId);
 
       if(!is_object($eqL)){
