@@ -13,6 +13,8 @@
 	   "Activer":"Activate",
 	   "Activer et lancer":"Activate and Launch",
 	   "Désactiver":"Deactivate",
+	   "Visible":"Show",
+	   "Masquer":"Hide",
 	   "Ne rien Faire":"Do Nothing",
 	   "Ajout d\\'une nouvelle condition":"Add a new condition",
 	   "Ne rien mettre":"Do not put anything",
@@ -26,6 +28,8 @@
 		"Activer":"Activate",
 		"Activer et lancer":"Activate and Launch",
 		"Désactiver":"Deactivate",
+		"Visible":"Show",
+		"Masquer":"Hide",
 		"Ne rien faire":"Do nothing"
 	 },
 	"plugins\/scenario_conditionner\/desktop\/php\/scenario_conditionner.php": {

@@ -13,6 +13,8 @@
 	   "Activer":"Activar",
 	   "Activer et lancer":"Activar y lanzar",
 	   "Désactiver":"Desactivar",
+	   "Visible":"Mostrar",
+	   "Masquer":"Ocultar",
 	   "Ne rien Faire":"No hacer nada",
 	   "Ajout d\\'une nouvelle condition":"Añadir una nueva condición",
 	   "Ne rien mettre":"No pongas nada en",
@@ -25,6 +27,8 @@
 		"Force Sortie":"Forzar la salida",
 		"Activer":"Activar",
 		"Activer et lancer":"Activar y lanzar",
+		"Visible":"Mostrar",
+		"Masquer":"Ocultar",
 		"Désactiver":"Desactivar",
 		"Ne rien faire":"No hacer nada"
 	 },
