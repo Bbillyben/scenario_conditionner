@@ -1,4 +1,4 @@
-# Scenario Conditionner plugin pour Jeedom
+# Activation Conditionner plugin pour Jeedom
 
 <p align="center">
   <img width="100" src="/plugin_info/scenario_conditionner_icon.png">
