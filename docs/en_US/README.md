@@ -60,6 +60,7 @@ Here you add the scenarios you want to manage, and define the condition input an
 * click on the icon next to the scenario field to open the scenario selector;
 * choose the input and output actions among :
   * __Activate__ : activate the scenario
+  * __Activate and launch__ : activate the scenario, and launch it with the tags defined in the tags field
   * __Desactivate__ : disable the scenario
   * __Do nothing__ : do not act on the change of condition (input or output)
  

@@ -11,6 +11,7 @@
 	   "Inverser":"Invertir",
 	   "Rechercher un scenario":"Buscar un escenario",
 	   "Activer":"Activar",
+	   "Activer et lancer":"Activar y lanzar",
 	   "Désactiver":"Desactivar",
 	   "Ne rien Faire":"No hacer nada",
 	   "Ajout d\\'une nouvelle condition":"Añadir una nueva condición",
@@ -23,6 +24,7 @@
 		"Force Entrée":"Entrada forzada",
 		"Force Sortie":"Forzar la salida",
 		"Activer":"Activar",
+		"Activer et lancer":"Activar y lanzar",
 		"Désactiver":"Desactivar",
 		"Ne rien faire":"No hacer nada"
 	 },

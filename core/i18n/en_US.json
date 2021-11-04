@@ -11,6 +11,7 @@
 	   "Inverser":"Invert",
 	   "Rechercher un scenario":"Search for a scenario",
 	   "Activer":"Activate",
+	   "Activer et lancer":"Activate and Launch",
 	   "Désactiver":"Deactivate",
 	   "Ne rien Faire":"Do Nothing",
 	   "Ajout d\\'une nouvelle condition":"Add a new condition",
@@ -23,6 +24,7 @@
 		"Force Entrée":"Force Entry",
 		"Force Sortie":"Force Exit",
 		"Activer":"Activate",
+		"Activer et lancer":"Activate and Launch",
 		"Désactiver":"Deactivate",
 		"Ne rien faire":"Do nothing"
 	 },
