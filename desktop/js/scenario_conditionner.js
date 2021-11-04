@@ -100,23 +100,38 @@ function addCmdToTable(_cmd) {
       tr += '<input class="cmdAttr form-control input-sm" data-l1key="name" placeholder="{{Nom de la commande}}">';
       tr += '</div>';
       tr += '</td>';
-    //commande
-      tr += '<td style="width:160px;">';
-      tr += '<div class="input-group input-group-sm" style="padding-left: 15px;">';
-      tr += '<input class="cmdAttr form-control" data-l1key="configuration" data-l2key="scenarCond"/>';
-      tr += '<span class="input-group-btn">'
-      tr += '<button type="button" class="btn btn-default cursor listCmdActionMessage tooltips cmdSendSel" title="{{Rechercher un scenario}}" data-input="sendCmd"><i class="fas fa-list-alt"></i></button>';
-      tr += '</span>';
+      //Type
+      tr += '<td style="min-width:50px;width:50px;">';
+      tr += '<div class="col-xm-5">';
+      tr += '<select id="sel_object" class="cmdAttr form-control" data-l1key="configuration" data-l2key="act_type">';
+      tr += '<option value="scenario">{{Scenario}}</option>';
+      tr += '<option value="equip">{{Equipement}}</option>';
+      tr += '</select>';
       tr += '</div>';
       tr += '</td>';
+  //commande
+  tr += '<td style="width:160px;">';
+  // type scenario
+  tr += '<div class="input-group" >';
+  tr += '<input class="cmdAttr form-control CS-scenar-el" data-l1key="configuration" data-l2key="scenarCond"/>';
+  // type action
+  tr += '<input class="cmdAttr form-control CS-cmd-el" data-l1key="configuration" data-l2key="equipCond"/>';
+  tr += '<span class="input-group-btn">';
+  tr += '<button type="button" class="btn btn-default cursor listCmdActionMessage tooltips cmdSendSel" title="{{Rechercher une commande}}" data-input="sendCmd"><i class="fas fa-list-alt"></i></button>';
+  tr += '</span>';
+  tr += '</div>';
+
+  tr += '</td>';
     
     // Action Entrée
     tr += '<td style="min-width:80px;width:100px;">';
-    tr += '<select class="cmdAttr form-control " data-l1key="configuration" data-l2key="entry-act">';
+    tr += '<select class="cmdAttr form-control CSselect" data-l1key="configuration" data-l2key="entry-act">';
    
     tr += '<option value="activate">{{Activer}}</option>';
-    tr += '<option value="activate_launch">{{Activer et lancer}}</option>';
+    tr += '<option class="scenar_sel" value="activate_launch">{{Activer et lancer}}</option>';
     tr += '<option value="deactivate">{{Désactiver}}</option>';
+    tr += '<option class="equip_sel" value="show">{{Visible}}</option>';
+    tr += '<option class="equip_sel" value="hide">{{Masquer}}</option>';
     tr += '<option value="none">{{Ne rien Faire}}</option>';
     tr += '</select>';
       // les tag du scenar
@@ -127,10 +142,12 @@ function addCmdToTable(_cmd) {
     tr += '</td>';
     // Action Sorie
     tr += '<td style="min-width:80px;width:100px;">';
-    tr += '<select class="cmdAttr form-control" data-l1key="configuration" data-l2key="exit-act">';
+    tr += '<select class="cmdAttr form-control CSselect" data-l1key="configuration" data-l2key="exit-act">';
     tr += '<option value="deactivate">{{Désactiver}}</option>';
     tr += '<option value="activate">{{Activer}}</option>';
-    tr += '<option value="activate_launch">{{Activer et lancer}}</option>';
+    tr += '<option class="scenar_sel" value="activate_launch">{{Activer et lancer}}</option>';
+    tr += '<option class="equip_sel" value="show">{{Visible}}</option>';
+    tr += '<option class="equip_sel" value="hide">{{Masquer}}</option>';
     tr += '<option value="none">{{Ne rien Faire}}</option>';
     tr += '</select>';
       // les tag du scenar
@@ -143,20 +160,11 @@ function addCmdToTable(_cmd) {
       tr += '<td style="min-width:5px;width:10px;">';
       tr += '<i class="fas fa-minus-circle pull-right cmdAction cursor" data-action="remove"></i></td>';
       tr += '</tr>';
-    
-    
-    
-    
-    
+
   	$('#tableScenario_cmd tbody').append(tr);
    	var tr = $('#tableScenario_cmd tbody tr').last();
     
   }
-  
-  
-  
-
-  
   
    jeedom.eqLogic.builSelectCmd({
      id:  $('.eqLogicAttr[data-l1key=id]').value(),
@@ -171,16 +179,49 @@ function addCmdToTable(_cmd) {
      }
    });
   
-  
    $(".cmdSendSel").on('click', function () {
-        var el = $(this);
-
-         jeedom.scenario.getSelectModal(null, function(result) {
-         var calcul = el.closest('div').find('.cmdAttr[data-l1key=configuration][data-l2key=scenarCond]');
-           calcul.val('');
-         calcul.atCaret('insert', result.human);
-       });
-    });  
+    
+      var el = $(this);
+      var elType = el.closest('tr').find('.cmdAttr[data-l1key=configuration][data-l2key=act_type]');
+      if(elType.val()=='equip'){
+          jeedom.eqLogic.getSelectModal({cmd:{type:'action'}}, function(result) {
+            var calcul = el.closest('div').find('.cmdAttr[data-l1key=configuration][data-l2key=equipCond]');
+            calcul.val('');
+            calcul.atCaret('insert', result.human);
+          });
+      }else{
+          jeedom.scenario.getSelectModal(null, function(result) {
+          var calcul = el.closest('div').find('.cmdAttr[data-l1key=configuration][data-l2key=scenarCond]');
+            calcul.val('');
+          calcul.atCaret('insert', result.human);
+        });
+      }
+    });
+   $('.cmdAttr[data-l1key=configuration][data-l2key=act_type]').on('change click',function(){
+      var elType = $(this).closest('tr');
+      var clSel = elType.find('.CSselect  :selected').attr('class');
+      if($(this).val()=='equip'){
+        elType.find('.CS-scenar-el').hide();
+        elType.find('.CS-cmd-el').show();
+        elType.find('.equip_sel').show();
+        elType.find('.scenar_sel').hide();
+        var checkClass = 'scenar_sel';
+      }else{
+        elType.find('.CS-scenar-el').show();
+        elType.find('.CS-cmd-el').hide(); 
+        elType.find('.equip_sel').hide();
+        elType.find('.scenar_sel').show();
+        var checkClass = 'equip_sel';
+      }
+      // vérification 
+      elType.find('.CSselect').each(function(e){
+        //console.log($(this).attr('data-l2key') + '  -  ' + $(this).val()+'  /  '+$(this).find(":selected").attr('class'));
+        if($(this).find(":selected").attr('class') == checkClass){
+          $(this).val($(this).find('option:first').val());
+          $(this).trigger('change');
+        }
+      });
+    });
 
 
     $('.cmdAttr[data-l2key="entry-act"]').on('change click', function(){
@@ -191,7 +232,8 @@ function addCmdToTable(_cmd) {
     }); 
     $('.cmdAttr[data-l2key="entry-act"]').trigger('change');
     $('.cmdAttr[data-l2key="exit-act"]').trigger('change');
- }
+    $('.cmdAttr[data-l2key="act_type"]').trigger('change');
+ }; //fin add command to table
 
 /*              GESTION Ajout scenarion       */
 $('.cmdAction[data-action=addSce]').on('click', function() {
@@ -203,7 +245,7 @@ $('.cmdAction[data-action=addSce]').on('click', function() {
 /*              GESTION Action launch       */
 //$('.cmdAttr[data-l2key=entry-act]').on('change', manageActionTag($(this)));
 function manageActionTag(param){
-  console.log(param.val());
+  //console.log(param.val());
   var tagEl = param.parent().find('.tagConfDiv');
   if(param.val()=='activate_launch'){
     tagEl.show();
