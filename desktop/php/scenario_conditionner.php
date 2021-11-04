@@ -160,8 +160,8 @@ $eqLogics = eqLogic::byType($plugin->getId());
 									<thead>
 										<tr>
 											<th class="col-sm-8">{{Scenario/Equipement}}</th>
-											<th>{{Action entrée}}</th>
-											<th>{{Action sortie}}</th>
+											<th>{{Action Entrée}}</th>
+											<th>{{Action Sortie}}</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -208,7 +208,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 								<th>{{Id}}</th>
 								<th>{{Nom}}</th>
 								<th>{{Type}}</th>
-								<th>{{Scenario/equipement}}</th>
+								<th>{{Scenario/Equipement}}</th>
 								<th>{{Action Entrée}}</th>
 								<th>{{Action Sortie}}</th>
                                 <th>{{Action}}</th>
