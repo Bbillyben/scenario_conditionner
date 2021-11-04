@@ -42,13 +42,19 @@ class scenario_conditionner extends eqLogic {
          
          if($cmdCol->getConfiguration('act_type')=='scenario'){
             $eqId = $cmdCol->getConfiguration('scenarCond');
-            if($eqId=='')continue;
+            if($eqId==''){
+               log::add(__CLASS__,"warning", 'Scenario not found in '.$eqL->getHumanName());
+               continue;
+            }
             $scen=scenario::byString($eqId);
          }else{  
             $eqId = str_replace(array('#', 'eqLogic'),array('',''),$cmdCol->getConfiguration('equipCond'));
             $scen=eqLogic::byId($eqId);
          }
-         if($scen == false || !is_object($scen))continue;
+         if($scen == false || !is_object($scen)){
+            log::add(__CLASS__,"warning", 'Item not found in '.$eqL->getHumanName());
+            continue;
+         }
          $listScen[]=array('scenar'=>$scen->getHumanName(),
                   'act_entry'=>self::getActionTranslation($cmdCol->getConfiguration('entry-act')),
                   'act_exit'=>self::getActionTranslation($cmdCol->getConfiguration('exit-act')));

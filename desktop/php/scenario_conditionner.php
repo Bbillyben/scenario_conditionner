@@ -28,7 +28,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 		<legend><i class="fas fa-table"></i> {{Mes Conditionners}}</legend>
 		<?php
 		if (count($eqLogics) == 0) {
-			echo '<br/><div class="text-center" style="font-size:1.2em;font-weight:bold;">{{Aucun équipement Scenario Conditionner n\'est paramétré, cliquer sur "Ajouter" pour commencer}}</div>';
+			echo '<br/><div class="text-center" style="font-size:1.2em;font-weight:bold;">{{Aucun équipement Activation Conditionner n\'est paramétré, cliquer sur "Ajouter" pour commencer}}</div>';
 		} else {
 			// Champ de recherche
 			echo '<div class="input-group" style="margin:5px;">';
@@ -71,7 +71,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 			<li role="presentation"><a href="#" class="eqLogicAction" aria-controls="home" role="tab" data-toggle="tab" data-action="returnToThumbnailDisplay"><i class="fas fa-arrow-circle-left"></i></a></li>
 			<li role="presentation" class="active"><a href="#eqlogictab" aria-controls="home" role="tab" data-toggle="tab"><i class="fas fa-tachometer-alt"></i> {{Equipement}}</a></li>
 			<li role="presentation"><a href="#commandtab" aria-controls="home" role="tab" data-toggle="tab"><i class="fas fa-list"></i> {{Commandes}}</a></li>
-            <li role="presentation"><a href="#conditionerTab" aria-controls="home" role="tab" data-toggle="tab"><i class="fas techno-fleches"></i> {{Scenario Conditioner}}</a></li>
+            <li role="presentation"><a href="#conditionerTab" aria-controls="home" role="tab" data-toggle="tab"><i class="fas techno-fleches"></i> {{Activation Conditioner}}</a></li>
 		</ul>
 		<div class="tab-content">
 			<!-- Onglet de configuration de l'équipement -->
@@ -149,7 +149,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 						<!-- Partie droite de l'onglet "Équipement" -->
 		
 						<div class="col-lg-6">
-							<legend><i class="fas fa-info"></i> {{Résumé des scénarios et Actions}}</legend>
+							<legend><i class="fas fa-info"></i> {{Résumé des scénarios/Equipements et Actions}}</legend>
 							<div class="form-group">
 							<label class="col-sm-2">{{Condition}}</label>
 							<div id="cond_show" class="col-sm-9 small-text-SC">
@@ -159,7 +159,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 								<table id="table_scenar_show" class="table">
 									<thead>
 										<tr>
-											<th class="col-sm-8">{{Scenario}}</th>
+											<th class="col-sm-8">{{Scenario/Equipement}}</th>
 											<th>{{Action entrée}}</th>
 											<th>{{Action sortie}}</th>
 										</tr>
