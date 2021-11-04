@@ -1,10 +1,10 @@
-# Escenario Acondicionador plugin para Jeedom
+# Activación Acondicionador plugin para Jeedom
 
 <p align="center">
   <img width="100" src="/plugin_info/scenario_conditionner_icon.png">
 </p>
 
-Este plugin permite habilitar o deshabilitar escenarios basados en la evaluación de una condición.
+Este plugin permite habilitar o deshabilitar escenarios o equipo basados en la evaluación de una condición.
 
 La condición se evalúa como entrada (verdadero) o salida (falso) y las acciones son configurables en ambos casos.
 
@@ -33,8 +33,8 @@ La condición se evalúa como entrada (verdadero) o salida (falso) y las accione
  * 
  Como con todos los equipos convencionales
  
- ### Resumen de escenarios y acciones
- A continuación se muestra un resumen de los escenarios configurados en la pestaña "Acondicionador de escenarios", así como las acciones establecidas dentro y fuera de la condición.
+ ### Resumen de escenarios/equipo y acciones
+ A continuación se muestra un resumen de los escenarios/equipo configurados en la pestaña "Acondicionador de acción", así como las acciones establecidas dentro y fuera de la condición.
  
  
  ### Condición  
@@ -58,11 +58,15 @@ La condición se evalúa como entrada (verdadero) o salida (falso) y las accione
 
 Aquí se añaden los escenarios que se quieren gestionar y se definen las acciones de entrada y salida de las condiciones
 
-* __Añadir un escenario__ : añadir un comando "escenario"
+* __Añadir__ : añade un comando para gestionar un escenario o un equipo
+* __Tipo__ : Elija entre escenario o equipo. La elección de las acciones de entrada y salida está contextualizada.
 * Haga clic en el icono situado junto al campo de escenario para abrir el selector de escenarios;
 * Elegir las acciones de entrada y salida entre :
-  * __Activar__ : activar el escenario
-  * __Desactivar__ : desactivar el escenario
+  * __Activar__ : activar el escenario/equipo
+  * __Activar y lanzar__ : **específico del escenario** activa el escenario y lo lanza con las etiquetas definidas en el campo de etiquetas
+  * __Desactivar__ : desactivar el escenario/equipo
+  * __Visible__ : **específico para el equipo** para hacer visible un equipo
+  * __ocultar__ : **Equipo específico** para ocultar un equipo
   * __No hacer nada__ : no actuar ante el cambio de condición (entrada o salida)
  
  
