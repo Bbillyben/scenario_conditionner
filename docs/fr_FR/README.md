@@ -1,4 +1,4 @@
-# Scenario Conditionner plugin pour Jeedom
+# Action Conditionner plugin pour Jeedom
 
 <p align="center">
   <img width="100" src="/plugin_info/scenario_conditionner_icon.png">
@@ -34,7 +34,7 @@ La condition est évaluée en entrée (vrai) ou en sortie (faux) et les actions 
 
  Comme tout équipement classique
  
- ### Résumé des scénarios et Actions
+ ### Résumé des scénarios/Equipement et Actions
  Ici sont résumés les scénarios configurés dans l'onglet "Scenario Conditioner", ainsi que les actions paramétrées en entrée et en sortie de condition.
  
  
