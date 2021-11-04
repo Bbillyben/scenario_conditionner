@@ -26,11 +26,10 @@ class scenario_conditionner extends eqLogic {
     
     /*     * ***********************Methode static*************************** */
   public static function getScenarList($eqId){
-      $eqL=eqLogic::byLogicalId($eqId,"ColorTransition");
       $eqL=eqLogic::byId($eqId);
 
       if(!is_object($eqL)){
-      log::add('ColorTransition', 'error', '####### Show room error '.$eqId.' not found######');
+      log::add('scenario_conditionner', 'error', '####### Show room error '.$eqId.' not found######');
       return false;
       }
       $listScen=array();
@@ -38,7 +37,13 @@ class scenario_conditionner extends eqLogic {
 
       foreach($allCmds as $cmdCol){
          if($cmdCol->getConfiguration('cmdType') != "conditioner")continue;
-         $scen=scenario::byString($cmdCol->getConfiguration('scenarCond'));
+         
+         if($cmdCol->getConfiguration('act_type')=='scenario'){
+            $scen=scenario::byString($cmdCol->getConfiguration('scenarCond'));
+         }else{  
+            $eqId = str_replace(array('#', 'eqLogic'),array('',''),$cmdCol->getConfiguration('equipCond'));
+            $scen=eqLogic::byId($eqId);
+         }
          $listScen[]=array('scenar'=>$scen->getHumanName(),
                   'act_entry'=>self::getActionTranslation($cmdCol->getConfiguration('entry-act')),
                   'act_exit'=>self::getActionTranslation($cmdCol->getConfiguration('exit-act')));
@@ -55,6 +60,12 @@ class scenario_conditionner extends eqLogic {
             break;
          case 'activate_launch':
             return __('Activer et lancer', __FILE__);
+            break;
+         case 'show':
+               return __('Visible', __FILE__);
+               break;
+         case 'hide':
+            return __('Masquer', __FILE__);
             break;
         case 'none':
          return __('Ne rien faire', __FILE__);
@@ -183,7 +194,7 @@ class scenario_conditionner extends eqLogic {
 			return;
 		}else{
         
-      		$testCond =jeedom::evaluateExpression($expression);
+      	$testCond =jeedom::evaluateExpression($expression);
         	$ctCMD = $this->getCmd(null, 'status');
         	$ctCMD->event($testCond);
       }
@@ -248,33 +259,45 @@ class scenario_conditionner extends eqLogic {
     
   }
   public function manageScenar($status){
-   		$action = ($status == 1? 'entry-act':'exit-act');
-    	log::add(__CLASS__, 'debug', 'Gestion scénario sur action:'.$action);
+   	$action = ($status == 1? 'entry-act':'exit-act');
+    	log::add(__CLASS__, 'debug', 'Gestion item sur action:'.$action);
     	$allCmd=$this->getCmd('info');
         foreach($allCmd as $cmd){
             if($cmd->getConfiguration('cmdType') != "conditioner")continue;
-            $scenarId =$cmd->getConfiguration('scenarCond');
+
+            if($cmd->getConfiguration('act_type')=='scenario'){
+               $eqId =$cmd->getConfiguration('scenarCond');
+               $scen=scenario::byString( $eqId);
+            }else{  
+               $eqId = str_replace(array('#', 'eqLogic'),array('',''),$cmd->getConfiguration('equipCond'));
+               $scen=eqLogic::byId($eqId);
+            }
+            if(!is_object($scen)){
+               log::add(__CLASS__, 'error', 'Item non trouvé, id : '. $eqId.', sur objet : '.$this->getHumanName());
+                 return false;
+                 
+            }
+
             $scenarAct = $cmd->getConfiguration($action);
-            log::add(__CLASS__, 'debug', 'action : '.$scenarAct.' sur scenario : '.$scenarId);
-			$this->action_scenar($scenarId, $scenarAct, $status, $cmd);
+            log::add(__CLASS__, 'debug', 'action : '.$scenarAct.' sur item : '.$scen->getHumanName());
+			$this->action_scenar($scen, $scenarAct, $status, $cmd);
         }
     
     	$ctCMD = $this->getCmd(null, 'status');
-        $ctCMD->event($status);
+      $ctCMD->event($status);
   }    
-  private function action_scenar($scenarId, $action, $status,$cmd){
+  private function action_scenar($scenar, $action, $status,$cmd){
    	if($action=='none')return;
-    $scenar=scenario::byString($scenarId);
-    if(!is_object($scenar)){
-    	log::add(__CLASS__, 'warning', 'Scenario non trouvé, id : '.$scenarId.' sur objet : '.$this->getHumanName());
-      	return false;
-      	
-    }
     switch ($action) {
         case 'activate':
-        	log::add(__CLASS__, 'debug', 'Activation scénario : '.$scenar->getHumanName());
+        	log::add(__CLASS__, 'debug', 'Activation item : '.$scenar->getHumanName());
+           if($cmd->getConfiguration('act_type')=='scenario'){
             $scenar->setIsActive(1);
-        	$scenar->save();
+           }else{
+            $scenar->setIsEnable(1);
+           }
+            
+        	   $scenar->save();
             break;
          case 'activate_launch':
             $scenar->setIsActive(1);
@@ -285,10 +308,25 @@ class scenario_conditionner extends eqLogic {
             $scenar->launch();
             break;
         case 'deactivate':
-            log::add(__CLASS__, 'debug', 'Désactivation scénario : '.$scenar->getHumanName());
-            $scenar->setIsActive(0);
-        	$scenar->save();
+            log::add(__CLASS__, 'debug', 'Désactivation item : '.$scenar->getHumanName());
+            if($cmd->getConfiguration('act_type')=='scenario'){
+               $scenar->setIsActive(0);
+              }else{
+               $scenar->setIsEnable(0);
+              }
+        	   $scenar->save();
             break;
+         case 'show':
+            log::add(__CLASS__, 'debug', 'Visible equipement : '.$scenar->getHumanName());
+            $scenar->setIsVisible(1);
+            $scenar->save();
+            break;
+         case 'hide':
+            log::add(__CLASS__, 'debug', 'Masquer equipement : '.$scenar->getHumanName());
+            $scenar->setIsVisible(0);
+            $scenar->save();
+            break;
+         
     }
     
     

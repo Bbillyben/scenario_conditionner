@@ -199,7 +199,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 			</div><!-- /.tabpanel #commandtab-->
             <!-- Onglet des Conditionneurs -->
 			<div role="tabpanel" class="tab-pane" id="conditionerTab">
-				<a class="btn btn-default btn-sm pull-right cmdAction" data-action="addSce" style="margin-top:5px;"><i class="fas fa-plus-circle"></i> {{Ajouter un scenario}}</a>
+				<a class="btn btn-default btn-sm pull-right cmdAction" data-action="addSce" style="margin-top:5px;"><i class="fas fa-plus-circle"></i> {{Ajouter}}</a>
 				<br/><br/>
 				<div class="table-responsive">
 					<table id="tableScenario_cmd" class="table table-bordered table-condensed">
@@ -207,7 +207,8 @@ $eqLogics = eqLogic::byType($plugin->getId());
 							<tr>
 								<th>{{Id}}</th>
 								<th>{{Nom}}</th>
-								<th>{{Scenario}}</th>
+								<th>{{Type}}</th>
+								<th>{{Scenario/equipement}}</th>
 								<th>{{Action Entrée}}</th>
 								<th>{{Action Sortie}}</th>
                                 <th>{{Action}}</th>
