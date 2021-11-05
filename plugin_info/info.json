@@ -2,8 +2,9 @@
 	"id": "scenario_conditionner",
 	"name": "Activation Conditionner",
 	"description": {
-		"fr_FR": "Ce plugin permet d activer ou de désactiver des scénarios selon l évaluation d une condition, qui peut être composite. Les actions sont définies selon l'entrée dans la condition (vrai) ou la sortie de la condition (faux)",
-		"en_US" : "This plugin allows to activate or deactivate scenarios according to the evaluation of a condition, which can be composite. The actions are defined according to the entry in the condition (true) or the exit from the condition (false)"
+		"fr_FR": "Ce plugin permet d activer ou de désactiver des scénarios ou équipements selon l évaluation d une condition, qui peut être composite. Les actions sont définies selon l'entrée dans la condition (vrai) ou la sortie de la condition (faux)",
+		"en_US" : "This plugin allows to activate or deactivate scenarios or equipmenet according to the evaluation of a condition, which can be composite. The actions are defined according to the entry in the condition (true) or the exit from the condition (false)",
+		"es_ES": "Este plugin permite activar o desactivar escenarios o equipos en función de la evaluación de una condición, que puede ser compuesta. Las acciones se definen en función de la entrada en la condición (verdadero) o la salida de la condición (falso)"
 	},
 	"licence": "AGPL",
 	"author": "Billyben",

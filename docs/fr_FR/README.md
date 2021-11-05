@@ -53,7 +53,7 @@ La condition est évaluée en entrée (vrai) ou en sortie (faux) et les actions 
 
  # Scénarios / Equipement
  <p align="center">
-  <img width="100%" src="/plugin_info/img/scenario.png">
+  <img width="100%" src="/plugin_info/img/scenario.PNG">
 </p>
 
 Ici vous ajoutez les scénarios que vous voulez gérer, et définissez les actions en entrée et en sortie de condition

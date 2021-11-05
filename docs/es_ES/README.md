@@ -53,7 +53,7 @@ La condición se evalúa como entrada (verdadero) o salida (falso) y las accione
 
  # Escenarios
  <p align="center">
-  <img width="100%" src="/plugin_info/img/scenario.png">
+  <img width="100%" src="/plugin_info/img/scenario.PNG">
 </p>
 
 Aquí se añaden los escenarios que se quieren gestionar y se definen las acciones de entrada y salida de las condiciones

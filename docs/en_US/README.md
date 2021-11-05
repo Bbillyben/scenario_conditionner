@@ -51,7 +51,7 @@ The condition is evaluated as input (true) or output (false) and the actions are
 
 # Scenarios
  <p align="center">
-  <img width="100%" src="/plugin_info/img/scenario.png">
+  <img width="100%" src="/plugin_info/img/scenario.PNG">
 </p>
 
 Here you add the scenarios you want to manage, and define the condition input and output actions
