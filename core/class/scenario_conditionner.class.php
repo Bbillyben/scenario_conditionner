@@ -417,8 +417,8 @@ class scenario_conditionnerCmd extends cmd {
 
   // Exécution d'une commande  
      public function execute($_options = array()) {
-        
-      log::add('scenario_conditionner','debug', "╔═══════════════════════ execute CMD : ".$this->getId()." | ".$this->getHumanName().", logical id : ".$this->getLogicalId() ."  options : ".print_r($_options));
+       
+      log::add('scenario_conditionner','debug', "╔═══════════════════════ execute CMD : ".$this->getId()." | ".$this->getHumanName().", logical id : ".$this->getLogicalId() ."  options : ".json_encode($_options));
       log::add('scenario_conditionner','debug', '╠════ Eq logic '.$this->getEqLogic()->getHumanName());
       
       switch($this->getLogicalId()){
@@ -429,9 +429,7 @@ class scenario_conditionnerCmd extends cmd {
          	break;
          case 'force_exit';
          	$this->getEqLogic()->manageScenar(0);
-           break;           case 'TEST';
-           $this->getEqLogic()->TEST();
-          break;
+           break;           
          default:
          log::add('scenario_conditionner','debug', '╠════ Default call');
 
