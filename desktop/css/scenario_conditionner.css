@@ -14,6 +14,7 @@
 .tagConfDiv > span{
     white-space: nowrap;
 }
-.tagConf{
+textarea.eqLogicAttr[data-l2key=comments]{
+  height:auto !important;
     
 }
