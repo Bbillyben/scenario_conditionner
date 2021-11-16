@@ -143,6 +143,24 @@ $eqLogics = eqLogic::byType($plugin->getId());
 								
                                 
 							</div>
+                            
+                            <?php
+                            		$addComment= config::byKey('add_comment', 'scenario_conditionner', 0);
+                                    $ctField = "";
+                                    if($addComment == 1){
+                                    		
+                                    	$ctField .= '<legend><i class="fas fa-pencil-alt"></i> {{Commentaires}}</legend>';
+                                        $ctField .= '<div class="form-group">';
+                                        $ctField .= '<label class="col-sm-3 control-label"></label>';
+                                        $ctField .= '<div class="col-sm-9 input-group input-group-sm expression">';
+                                        $ctField .= '<textarea class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="comments" rows="3"></textarea>';
+                                        $ctField .= '</div>';
+                                        $ctField .= '</div>';
+                                        
+                                        echo $ctField;
+                                    }
+                                    
+                            ?>
 							
 						</div>
 
