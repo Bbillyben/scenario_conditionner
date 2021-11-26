@@ -1,4 +1,4 @@
-# Scenario Conditionner plugin pour Jeedom
+# Activation Conditionner plugin pour Jeedom
 
 <p align="center">
   <img width="100" src="/plugin_info/scenario_conditionner_icon.png">
@@ -56,15 +56,15 @@ La condition est évaluée en entrée (vrai) ou en sortie (faux) et les actions 
   <img width="100%" src="/plugin_info/img/scenario.PNG">
 </p>
 
-Ici vous ajoutez les scénarios que vous voulez gérer, et définissez les actions en entrée et en sortie de condition
+Ici vous ajoutez les scénarios et équipements que vous voulez gérer, et définissez les actions en entrée et en sortie de condition
 
 * __Ajouter un Item__ : ajoute une commande pour gérer un scenario ou un équipement
 * __Type__ : Choississez entre scénario ou équipement les choix des actions entrée et sortie est contextualisé.
 * cliquez sur l'icône à côté du champ scénario ou équipement pour ouvrir le sélectionneur;
 * choisissez les actions en entrée et en sortie parmi :
-  * __Activer__ : activer le scénario
+  * __Activer__ : activer le scénario ou l'équipement
   * __Activer et lancer__ : **spécifique scénario** active le scenario et le lance avec les tags dérfini dans le champs tags
-  * __Désactiver__ : désactiver le scénario
+  * __Désactiver__ : désactiver le scénario ou l'équipement
   * __Visible__ : **spécifique équipement** pour rendre visible un équipement
   * __Masquer__ : **spécifique équipement** pour masquer un équipement
   * __Ne rien Faire__ : n'agit pas sur le changement de condition (en entrée ou en sortie)
