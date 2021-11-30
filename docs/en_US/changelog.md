@@ -1,3 +1,8 @@
+###30 Nov 21
+  * correction of bug on forced verification
+  * correction of summary table display
+
+
 ###2 Nov 21 
   * Adding the configuration add comment in the equipment
   * Adding the comment insert in the equipment
