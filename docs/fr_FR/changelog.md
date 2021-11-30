@@ -1,3 +1,7 @@
+###30 Nov 21
+  * Correction bug sur vérification forcée
+  * correction affichage table résumée
+
 ###2 Nov 21 
   * Ajout de la configuration ajout de commentaire dans les équipements
   * Ajout de l'encart commentaire dans les équipement

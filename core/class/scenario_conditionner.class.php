@@ -261,6 +261,7 @@ class scenario_conditionner extends eqLogic {
 			return;
 		} 
     	$testCond =jeedom::evaluateExpression($expression);
+    	log::add(__CLASS__, 'debug', 'Expression évaluée à '.($testCond==1?1:0));
     	if($testCond == $status){
           	log::add(__CLASS__, 'debug', 'Condition identique à status en cours :'.$testCond.'/'.$status);
           return;
@@ -270,7 +271,7 @@ class scenario_conditionner extends eqLogic {
     
   }
   public function manageScenar($status){
-   	$action = ($status == 1? 'entry-act':'exit-act');
+   		$action = ($status == 1? 'entry-act':'exit-act');
     	log::add(__CLASS__, 'debug', 'Gestion item sur action:'.$action);
     	$allCmd=$this->getCmd('info');
         foreach($allCmd as $cmd){
@@ -424,6 +425,7 @@ class scenario_conditionnerCmd extends cmd {
       switch($this->getLogicalId()){
          case 'force_check':
           	$this->getEqLogic()->checkCondition();
+          break;
          case 'force_entry':
           	$this->getEqLogic()->manageScenar(1);
          	break;

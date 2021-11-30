@@ -349,18 +349,19 @@ function printEqLogic(_mem) {
             $('#div_alert').showAlert({message: data.result, level: 'danger'});
             return;
         }
-        //console.log(data.result);
+        console.log(data.result);
         
         // onvide le wrapper
         var tbody=$("#table_scenar_show > tbody");
         tbody.empty();
-        
         for (var i = 0, len = data.result.length; i < len; i++) {
-          tbody.append("<tr>");
-          tbody.append("<td class='table_resume'>"+data.result[i]["scenar"]+"</td>");
-          tbody.append("<td class='table_resume'>"+data.result[i]["act_entry"]+"</td>");
-          tbody.append("<td class='table_resume'>"+data.result[i]["act_exit"]+"</td>");
-          tbody.append("</tr>");
+          var str = "";
+          str +="<tr>";
+          str +="<td class='table_resume_left'>"+data.result[i]["scenar"]+"</td>";
+          str +="<td class='table_resume'>"+data.result[i]["act_entry"]+"</td>";
+          str +="<td class='table_resume'>"+data.result[i]["act_exit"]+"</td>";
+          str +="</tr>";
+          tbody.append(str);
          
         }
 

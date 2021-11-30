@@ -1,6 +1,9 @@
 .table_resume{
     text-align: center;
 }
+.table_resume_left{
+    text-align: left;
+}
 .small-text-SC{
     font-size: 0.8em !important;
 }
