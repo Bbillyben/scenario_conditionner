@@ -1,10 +1,10 @@
-# Escenario Acondicionador plugin para Jeedom
+# Activación Acondicionador plugin para Jeedom
 
 <p align="center">
   <img width="100" src="/plugin_info/scenario_conditionner_icon.png">
 </p>
 
-Este plugin permite habilitar o deshabilitar escenarios basados en la evaluación de una condición.
+Este plugin permite habilitar o deshabilitar escenarios o equipo basados en la evaluación de una condición.
 
 La condición se evalúa como entrada (verdadero) o salida (falso) y las acciones son configurables en ambos casos.
 
@@ -61,8 +61,11 @@ Aquí se añaden los escenarios que se quieren gestionar y se definen las accion
 * __Añadir un escenario__ : añadir un comando "escenario"
 * Haga clic en el icono situado junto al campo de escenario para abrir el selector de escenarios;
 * Elegir las acciones de entrada y salida entre :
-  * __Activar__ : activar el escenario
-  * __Desactivar__ : desactivar el escenario
-  * __No hacer nada__ : no actuar ante el cambio de condición (entrada o salida)
+  * __Activar__ : activar el escenario o el equipo
+  * __Activar y lanzar__ : **específico del escenario** activa el escenario y lo lanza con las etiquetas definidas en el campo de etiquetas
+  * __Desactivar__ : desactivar el escenario o el equipo
+  * __Visible__ : **específico para el equipo** para hacer visible un equipo
+  * __Hide__ : __Hide__ : **específico para equipos** para ocultar un equipo
+  * No hacer nada__ : no afecta al cambio de condición (dentro o fuera)
  
  

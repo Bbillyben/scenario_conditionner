@@ -1,10 +1,10 @@
-# Scenario Conditioner plugin for Jeedom
+# Activation Conditioner plugin for Jeedom
 
 <p align="center">
   <img width="100" src="/plugin_info/scenario_conditionner_icon.png">
 </p>
 
-This plugin allows you to enable or disable scenarios based on the evaluation of a condition.
+This plugin allows you to enable or disable scenarios or equipment based on the evaluation of a condition.
 
 The condition is evaluated as input (true) or output (false) and the actions are configurable on both.
 
@@ -59,8 +59,11 @@ Here you add the scenarios you want to manage, and define the condition input an
 * __Add a scenario__ : add a "scenario" command
 * click on the icon next to the scenario field to open the scenario selector;
 * choose the input and output actions among :
-  * __Activate__ : activate the scenario
-  * __Activate and launch__ : activate the scenario, and launch it with the tags defined in the tags field
-  * __Desactivate__ : disable the scenario
-  * __Do nothing__ : do not act on the change of condition (input or output)
+  * __Activate__ : activate the scenario or the equipment
+  * __Activate and launch__ : **scenario-specific** activates the scenario and launches it with the tags defined in the tags field
+  * __Deactivate__ : deactivate the scenario or the equipment
+  * __Visible__ : **equipment specific** to make an equipment visible
+  * __Hide__ : __Hide__ : **equipment specific** to hide an equipment
+  * Do Nothing__ : does not affect the change of condition (in or out)
+
  
