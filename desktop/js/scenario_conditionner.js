@@ -264,7 +264,7 @@ $('.bt_testExpressionSC').on('click', function(e){
         setTimeout(function(){
           $("#in_testExpression").atCaret('insert',expression);
           $('#bt_executeExpressionOk').trigger('click');
-      },100);  
+      },300);  
     }
   });
 })
