@@ -42,10 +42,17 @@ $eqLogics = eqLogic::byType($plugin->getId());
 			echo '<div class="eqLogicThumbnailContainer">';
 			foreach ($eqLogics as $eqLogic) {
 				$opacity = ($eqLogic->getIsEnable()) ? '' : 'disableCard';
-				echo '<div class="eqLogicDisplayCard cursor '.$opacity.'" data-eqLogic_id="' . $eqLogic->getId() . '">';
+				echo '<div class="eqLogicDisplayCard scBox cursor '.$opacity.'" data-eqLogic_id="' . $eqLogic->getId() . '">';
 				echo '<img src="' . $plugin->getPathImgIcon() . '"/>';
 				echo '<br>';
 				echo '<span class="name">' . $eqLogic->getHumanName(true, true) . '</span>';
+              	echo '<span class="displayTableRight">';
+              	$status=scenario_conditionner::getStatusById($eqLogic->getId());
+              	echo '<span class="hidden hiddenAsCard">'.$status[2].'</span>';
+              	echo '<span class="scc_show-room-text">{{status}} </span>';
+              	echo '<span class="scc_show-room-color '.($status[0] ==1 ? 'activated':'deactivated').'"> </span>';
+              	echo '<span class="scc_show-room-text row">'.$status[1].'</span>';
+              	echo '</span>';
 				echo '</div>';
 			}
 			echo '</div>';
