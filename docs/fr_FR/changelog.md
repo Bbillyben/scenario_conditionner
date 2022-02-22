@@ -1,3 +1,7 @@
+###22 Feb 22
+  * add tabular view support (as well as card)
+
+
 ###30 Nov 21
   * Correction bug sur vérification forcée
   * correction affichage table résumée

@@ -21,3 +21,32 @@ textarea.eqLogicAttr[data-l2key=comments]{
   height:auto !important;
     
 }
+.scc_show-room-text{
+	vertical-align:middle;
+  	font-size:9px;
+}
+.scc_show-room-text.row{
+	display:block;
+}
+.displayAsTable .scc_show-room-text.row{
+	display: inline-block !important;
+	margin-left: 12px;
+}
+.scc_show-room-color{
+  min-width:5px;
+  width:12px;
+  height:12px;
+  display:inline-block;
+  margin-right: 4px;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+.scc_show-room-color.activated{
+  	background-color: green !important;
+}
+.scc_show-room-color.deactivated{
+  	background-color: red !important;
+}
+div.eqLogicThumbnailContainer .eqLogicDisplayCard.scBox{
+	height:auto !important;
+}

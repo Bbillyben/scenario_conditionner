@@ -25,6 +25,23 @@ class scenario_conditionner extends eqLogic {
 
     
     /*     * ***********************Methode static*************************** */
+  public static function getStatusById($eqId){
+  	log::add(__CLASS__, 'debug', 'call showroom, id :'.$eqId);
+     if($eqId=='' or $eqId==0)return false;
+      $eqL=eqLogic::byId($eqId);
+
+      if(!is_object($eqL)){
+        log::add('scenario_conditionner', 'error', '####### Get EqlL error '.$eqId.' not found######');
+        return false;
+      }
+    	$ctCMD = $eqL->getCmd(null, 'status');
+      if (!is_object($ctCMD)) {
+        log::add('scenario_conditionner', 'error', '####### Get Status CMD error '.$eqId.' not found######');
+        return false;
+      }
+    return array($ctCMD->execCmd(), $ctCMD->getValueDate());
+  
+  }
   public static function getScenarList($eqId){
      log::add(__CLASS__, 'debug', 'call showroom, id :'.$eqId);
      if($eqId=='' or $eqId==0)return array();

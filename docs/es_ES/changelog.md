@@ -1,3 +1,6 @@
+###22 Feb 22
+  * add tabular view support (as well as card)
+  
 ###30 Nov 21
   * Corrección de un error en la verificación forzada
   * Corrección de la visualización del cuadro recapitulativo
