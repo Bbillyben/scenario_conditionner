@@ -25,6 +25,7 @@ class scenario_conditionner extends eqLogic {
 
     
     /*     * ***********************Methode static*************************** */
+  
   public static function getStatusById($eqId){
   	log::add(__CLASS__, 'debug', 'call showroom, id :'.$eqId);
      if($eqId=='' or $eqId==0)return false;
@@ -39,7 +40,7 @@ class scenario_conditionner extends eqLogic {
         log::add('scenario_conditionner', 'error', '####### Get Status CMD error '.$eqId.' not found######');
         return false;
       }
-    return array($ctCMD->execCmd(), $ctCMD->getValueDate());
+      return array($ctCMD->execCmd(), $ctCMD->getValueDate(), jeedom::toHumanReadable($eqL->getConfiguration('expression', '')));
   
   }
   public static function getScenarList($eqId){

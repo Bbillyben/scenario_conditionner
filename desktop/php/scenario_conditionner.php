@@ -48,6 +48,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 				echo '<span class="name">' . $eqLogic->getHumanName(true, true) . '</span>';
               	echo '<span class="displayTableRight">';
               	$status=scenario_conditionner::getStatusById($eqLogic->getId());
+              	echo '<span class="hidden hiddenAsCard">'.$status[2].'</span>';
               	echo '<span class="scc_show-room-text">{{status}} </span>';
               	echo '<span class="scc_show-room-color '.($status[0] ==1 ? 'activated':'deactivated').'"> </span>';
               	echo '<span class="scc_show-room-text row">'.$status[1].'</span>';
