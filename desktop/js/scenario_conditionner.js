@@ -283,7 +283,7 @@ $divScenario.on('click', '.bt_selectCmdExpressionSC', function(event) {
     }
   }, function(result) {
    
-      var message = getSelectCmdExpressionMessage(result.cmd.subType, result.human)
+      var message = jeeFrontEnd.scenario.getSelectCmdExpressionMessage(result.cmd.subType, result.human)
       bootbox.dialog({
         title: "{{Ajout d'une nouvelle condition}}",
         message: message,
